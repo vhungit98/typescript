@@ -6,23 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 // Decorator for class: Class decorator
 // Thường được áp dụng cho constructor của class và có thể được sử dụng để để theo dõi, sửa đổi hoặc thay thế định nghĩa cho class
-function LogMethod() {
-    var constructor = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        constructor[_i] = arguments[_i];
-    }
-    console.log(constructor[1]);
-    return function (target, name, descript) {
-        console.log('Log 1 của function: ' + target);
-        console.log('Log 2 của function: ' + name);
-        console.log('Log 3 của function: ' + descript);
-    };
-}
-function Logger1() {
-    var constructor = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        constructor[_i] = arguments[_i];
-    }
+function Logger1(constructor) {
     console.log("Log 1 c\u1EE7a decorator");
     console.log("Log 2 c\u1EE7a decorator: (constructor) \n    " + constructor);
 }
@@ -31,12 +15,6 @@ var Person1 = /** @class */ (function () {
         this.name = "Max";
         console.log('Log 1 của class');
     }
-    Person1.prototype.test = function () {
-        console.log('log của method');
-    };
-    __decorate([
-        LogMethod
-    ], Person1.prototype, "test");
     Person1 = __decorate([
         Logger1 // Được khai báo bằng một function, decorator được gọi trước khi chạy đến constructor
     ], Person1);

@@ -1,15 +1,6 @@
 // Decorator for class: Class decorator
 // Thường được áp dụng cho constructor của class và có thể được sử dụng để để theo dõi, sửa đổi hoặc thay thế định nghĩa cho class
-function LogMethod(...constructor: any) {
-    console.log(constructor[1]);
-
-    return function (target: any, name: string, descript: PropertyDescriptor) {
-        console.log('Log 1 của function: ' + target);
-        console.log('Log 2 của function: ' + name);
-        console.log('Log 3 của function: ' + descript);
-    }
-}
-function Logger1(...constructor: any) {
+function Logger1(constructor: Function) {
     console.log(`Log 1 của decorator`);
     console.log(`Log 2 của decorator: (constructor) 
     ${constructor}`);
@@ -20,11 +11,6 @@ class Person1 {
     constructor() {
         console.log('Log 1 của class');
     }
-    @LogMethod
-    test(): void {
-        console.log('log của method');
-    }
-
 }
 const pers1 = new Person1();
 // pers1.test();
